@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  nginx:
+    container_name: nginx
+    image: andyalamo/nginx:raspi64
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - /opt/nginx/sites-available:/etc/nginx/sites-available
+      - /opt/nginx/sites-enabled:/etc/nginx/sites-enabled
+      - /opt/nginx/letsencrypt:/etc/letsencrypt
+      - /opt/nginx/www:/var/www
