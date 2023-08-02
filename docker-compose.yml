@@ -11,3 +11,16 @@ services:
     volumes:
       - ${local_data}:/data
       - ${local_letsencrypt}:/etc/letsencrypt
+    networks:
+      - nginx
+
+  rtsp_redirection:
+    container_name: rtsp_redirection
+    image: 'alpine'
+    command: sh -c "apk add --no-cache socat && socat TCP-LISTEN:554,fork TCP:192.168.1.51:554"
+    restart: unless-stopped
+    networks:
+      - nginx
+
+networks:
+  nginx:
