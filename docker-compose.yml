@@ -9,5 +9,5 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - ${local_data}:/data
-      - ${local_letsencrypt}:/etc/letsencrypt
+      - ${nginx_data_path}:/data
+      - ${nginx_letsencrypt_path}:/etc/letsencrypt
